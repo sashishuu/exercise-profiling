@@ -57,5 +57,5 @@ Improvement in JMeter:
 ![Screenshot (1442)](https://github.com/user-attachments/assets/b79ffe62-610f-4e7f-8fce-a9fafcadf776)
 ![Screenshot (1443)](https://github.com/user-attachments/assets/82c85b1e-b4a9-41a3-b5ef-c13176800329)
 
-conclusions:
+Conclusions:
 After completing the profiling and performance optimization process, we retested the application using JMeter and compared the new measurements with our initial results. The changes made to the /all-student-name endpoint—specifically, optimizing the joinStudentNames method by leveraging parallel streams and efficient string joining—resulted in a significant reduction in processing time, achieving an improvement of approximately 20%. Similarly, refactoring the /highest-gpa endpoint by modifying the findStudentWithHighestGpa method to use a direct repository query (findTopByOrderByGpaDesc) greatly reduced CPU time and overall processing time, meeting the performance improvement target. Overall, these optimizations have enhanced the application's responsiveness and scalability, confirming that the profiling and refactoring efforts were successful in achieving the desired performance gains.
