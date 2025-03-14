@@ -53,3 +53,8 @@ Optimization strategies implemented are as follows:
 - Replacing inefficient string concatenation with Collectors.joining() in joinStudentNames().
 - Running unit and integration tests after optimizations to ensure no functionality is broken.
 - Comparing JMeter performance results before and after optimization to confirm at least a 20% improvement in response time.
+
+Improvement in JMeter:
+![Screenshot (1442)](https://github.com/user-attachments/assets/b79ffe62-610f-4e7f-8fce-a9fafcadf776)
+![Screenshot (1443)](https://github.com/user-attachments/assets/82c85b1e-b4a9-41a3-b5ef-c13176800329)
+
