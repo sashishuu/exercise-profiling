@@ -6,13 +6,12 @@ import com.advpro.profiling.tutorial.repository.StudentCourseRepository;
 import com.advpro.profiling.tutorial.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-/**
- * @author muhammad.khadafi
- */
+
 @Service
 public class StudentService {
 
@@ -23,28 +22,37 @@ public class StudentService {
     private StudentCourseRepository studentCourseRepository;
 
 
-    //  Optimized method to get all students with courses using batch fetching.
+    // Optimized method to get all students with their courses in a single query
+    //  Reduces N+1 queries to just 1 via JPQL JOIN FETCH
 
     public List<StudentCourse> getAllStudentsWithCourses() {
-        return studentCourseRepository.findAllWithStudentsAndCourses();  // Use JPQL with JOIN FETCH
+
+        return studentCourseRepository.findAllWithStudentsAndCourses();
     }
 
 
-     // Optimized method to find the student with the highest GPA directly via query.
+    // Optimized method to find the student with the highest GPA directly
+     // This avoids fetching all students into memory and looping.
 
     public Optional<Student> findStudentWithHighestGpa() {
-        return studentRepository.findTopByOrderByGpaDesc(); // Fetches highest GPA directly
+
+        return studentRepository.findTopByOrderByGpaDesc();
     }
 
 
-     //  Optimized method to join student names using StringBuilder and Streams.
+      //Optimized method to join all student names into a single String.
+     // Uses parallelStream() to potentially speed up large list processing
+
 
     public String joinStudentNames() {
         return studentRepository.findAll()
-                .stream()
+                .parallelStream()
                 .map(Student::getName)
                 .collect(Collectors.joining(", "));
     }
+
+
+     // Fetches all students (if needed by other endpoints).
 
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
