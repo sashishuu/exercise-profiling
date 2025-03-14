@@ -13,3 +13,6 @@ highest-gpa:
 test plan script
 ![image](https://github.com/user-attachments/assets/2dc4f9e3-ed16-4bf9-852c-863a4e740a9e)
 ![image](https://github.com/user-attachments/assets/8ba80e16-2070-4ceb-8d71-60e26dc51584)
+
+conclusion:
+After completing the profiling and performance optimization process, we retested the application using JMeter and compared the new measurements with our initial results. The changes made to the /all-student-name endpoint—specifically, optimizing the joinStudentNames method by leveraging parallel streams and efficient string joining—resulted in a significant reduction in processing time, achieving an improvement of approximately 20%. Similarly, refactoring the /highest-gpa endpoint by modifying the findStudentWithHighestGpa method to use a direct repository query (findTopByOrderByGpaDesc) greatly reduced CPU time and overall processing time, meeting the performance improvement target. Overall, these optimizations have enhanced the application's responsiveness and scalability, confirming that the profiling and refactoring efforts were successful in achieving the desired performance gains.
